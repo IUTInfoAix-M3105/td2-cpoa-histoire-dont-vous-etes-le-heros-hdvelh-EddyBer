@@ -16,6 +16,7 @@ public class NodeMultiple {
 	public static final String ERROR_MSG_INDEX_OUT_OF_RANGE = "Index out of range";
 	public static int NODE_MAX_ARITY = 10;
 	private NodeMultiple[] daughters;
+	private Object Ndata;
 	/* Overridden methods */
 
 	@Override
@@ -65,7 +66,12 @@ public class NodeMultiple {
 	 * @param daughters the daughters to set
 	 */
 	public void setDaughters(NodeMultiple[] daughters) {
-		/* TO BE COMPLETED */
+		int i = 0;
+		while (daughters[i] != null && i < NODE_MAX_ARITY){
+			daughters[i] = daughters[i];
+		}
+
+		}
 	}
 
 	/**
@@ -91,14 +97,14 @@ public class NodeMultiple {
 	 * @return the content data
 	 */
 	public Object getData() {
-		/* TO BE COMPLETED */
+		return  Ndata;
 	}
 
 	/**
 	 * @param data
 	 */
 	public void setData(Object data) {
-		/* TO BE COMPLETED */
+		Ndata = data;
 	}
 
 	/**
@@ -114,7 +120,8 @@ public class NodeMultiple {
 	 * Default constructor.
 	 */
 	public NodeMultiple() {
-		/* TO BE COMPLETED */
+		this.data = null;
+		daughters = new
 	}
 
 	/**
