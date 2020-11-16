@@ -25,11 +25,12 @@ public class NodeMultiple {
 	}
 
 	/* Getters/Setters */
+
 	/**
 	 * Gets the {@code i}th daughter node.
-	 * 
+	 * <p>
 	 * Aborts if the given index {@code i} is out of range.
-	 * 
+	 *
 	 * @param i the index of the daughter node.
 	 * @return the {@code i}th daughter node, or {@code null} if it does not exist.
 	 */
@@ -42,12 +43,12 @@ public class NodeMultiple {
 	 * Should be used cautiously, since {@code i} may not be the first index
 	 * available (i.e. there may be lower indexes which do not refer to any
 	 * daughter).
-	 * 
+	 * <p>
 	 * If a daughter node is already referred to at this index then it is erased
 	 * with {@code daughter}.
-	 * 
+	 * <p>
 	 * Aborts if the index {@code i} is out of range.
-	 * 
+	 *
 	 * @param daughter the node to be linked as a daughter of {@code this} node.
 	 * @param i        the daughter node's index
 	 */
@@ -67,28 +68,30 @@ public class NodeMultiple {
 	 */
 	public void setDaughters(NodeMultiple[] daughters) {
 		int i = 0;
-		while (daughters[i] != null && i < NODE_MAX_ARITY){
+		while (daughters[i] != null && i < NODE_MAX_ARITY) {
 			daughters[i] = daughters[i];
 		}
 
-		}
 	}
+
 
 	/**
 	 * Adds the given {@code daughter} node at the first available index.
-	 * 
+	 * <p>
 	 * If the max number of daughters ({@link #NODE_MAX_ARITY}) is already reached
 	 * nothing happens (no abort).
-	 * 
+	 *
 	 * @param daughter
 	 */
 	public void addDaughter(NodeMultiple daughter) {
-		if(daughter == null){ return; }
+		if (daughter == null) {
+			return;
+		}
 		int index = 0;
-		while (daughters[i] != null && i < NODE_MAX_ARITY){
+		while (daughters[i] != null && i < NODE_MAX_ARITY) {
 			index++;
 		}
-		if ( i <NODE_MAX_ARITY){
+		if (i < NODE_MAX_ARITY) {
 			daughters[i] = daughter;
 		}
 	}
@@ -97,7 +100,7 @@ public class NodeMultiple {
 	 * @return the content data
 	 */
 	public Object getData() {
-		return  Ndata;
+		return Ndata;
 	}
 
 	/**
@@ -109,29 +112,34 @@ public class NodeMultiple {
 
 	/**
 	 * @return {@code true} if and only if this node has at least one non-null
-	 *         daughter node.
+	 * daughter node.
 	 */
 	public boolean hasDaughters() {
-		/* TO BE COMPLETED */
+		if (getDaughters() != null) {
+			return true;
+		} else return false;
 	}
 
 	/* Constructors */
+
 	/**
 	 * Default constructor.
 	 */
 	public NodeMultiple() {
 		this.data = null;
-		daughters = new
+		daughters = new NodeMultiple[NODE_MAX_ARITY];
 	}
 
 	/**
 	 * Constructor. Sets the content data to {@code data} and creates an empty set
 	 * of daughters.
-	 * 
+	 *
 	 * @param data
 	 */
 	public NodeMultiple(Object data) {
-		/* TO BE COMPLETED */
+		this();
+		this.data = data;
+	}
 }
 
 // eof
