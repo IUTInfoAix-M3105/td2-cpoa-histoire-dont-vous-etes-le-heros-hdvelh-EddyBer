@@ -35,6 +35,10 @@ public class NodeMultiple {
 	 * @return the {@code i}th daughter node, or {@code null} if it does not exist.
 	 */
 	public NodeMultiple getDaughter(int i) {
+		if (i >= NODE_MAX_ARITY || i<0){
+			errorNaiveHandler.abort(ERROR_STATUS_INDEX_OUT_OF_RANGE,
+					ERROR_MSG_INDEX_OUT_OF_RANGE + '@'+ getClass() + ".getDaughter()");
+		}
 		return daughters[i];
 	}
 
