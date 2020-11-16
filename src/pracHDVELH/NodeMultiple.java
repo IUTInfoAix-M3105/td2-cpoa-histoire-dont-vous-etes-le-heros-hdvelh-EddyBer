@@ -51,7 +51,7 @@ public class NodeMultiple {
 	 * @param i        the daughter node's index
 	 */
 	public void setDaughter(NodeMultiple daughter, int i) {
-		/* TO BE COMPLETED */
+		daughters[i] = daughter;
 	}
 
 	/**
