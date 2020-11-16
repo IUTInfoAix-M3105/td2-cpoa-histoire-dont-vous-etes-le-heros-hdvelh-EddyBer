@@ -21,11 +21,7 @@ public class NodeMultiple {
 
 	@Override
 	public String toString() {
-		StringBuilder info = new StringBuilder();
-		info.append(Ndata.toString());
-		info.append("/ndaughters: ");
-		info.append("("+ daughters.length + ")");
-		return info.toString();
+		return Ndata.toString();
 	}
 
 	/* Getters/Setters */
