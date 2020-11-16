@@ -58,7 +58,7 @@ public class NodeMultiple {
 	 * @return all the daughters
 	 */
 	public NodeMultiple[] getDaughters() {
-		/* TO BE COMPLETED */
+		return daughters;
 	}
 
 	/**
