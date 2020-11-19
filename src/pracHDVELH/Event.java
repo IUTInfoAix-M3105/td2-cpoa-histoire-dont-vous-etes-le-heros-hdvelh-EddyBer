@@ -13,10 +13,44 @@ import myUtils.ErrorNaiveHandler;
  * @author prost
  *
  */
-public class Event extends NodeMultiple {
+public class Event<unsigned> extends NodeMultiple {
 	public static final String ERROR_MSG_UNEXPECTED_END = "Sorry, for some unexpected reason the story ends here...";
 	public static final String PROMPT_ANSWER = "Answer: ";
 	public static final String WARNING_MSG_INTEGER_EXPECTED = "Please input a integer within range!";
+	private int id;
+	/**
+	 * Event identifier
+	 **/
+	private GUIManager gui;
+	/**
+	 * Graphical User Interface
+	 **/
+	private String playerAnswer;
+	/**
+	 * Text Version of player's answer
+	 **/
+	private int chosenPath;
+	/**
+	 * Daughter's index chosen for the next event
+	 **/
+	private Scanner reader;
+	/**
+	 * input reader
+	 **/
+	static private int lastId = -1;
+
+	/* CONSTRUCTORS*/
+	public Event() {
+		this(new GUIManager(), "");
+	}
+
+	public Event(GUIManager gui, String data) {
+		super(data);
+		this.gui = gui;
+		id = ++lastId;
+		chosenPath = -1;
+		reader = gui.getInputReader();
+	}
 
 	/**
 	 * @return the playerAnswer
@@ -61,6 +95,7 @@ public class Event extends NodeMultiple {
 	}
 
 	/* Methods */
+
 	/**
 	 * @see pracHDVELH.NodeMultiple#getData()
 	 */
@@ -69,8 +104,8 @@ public class Event extends NodeMultiple {
 	}
 
 	/**
-	 * @see pracHDVELH.NodeMultiple#setData(Object)
 	 * @param data
+	 * @see pracHDVELH.NodeMultiple#setData(Object)
 	 */
 	public void setData(String data) {
 		/* TO BE COMPLETED */
@@ -85,9 +120,9 @@ public class Event extends NodeMultiple {
 	}
 
 	/**
-	 * @see pracHDVELH.NodeMultiple#setDaughter(NodeMultiple, int)
 	 * @param daughter
 	 * @param i
+	 * @see pracHDVELH.NodeMultiple#setDaughter(NodeMultiple, int)
 	 */
 	public void setDaughter(Event daughter, int i) {
 		/* TO BE COMPLETED */
@@ -116,6 +151,12 @@ public class Event extends NodeMultiple {
 
 	/* Methods */
 	/* TO BE COMPLETED */
+	public Event run() {
+		gui.outputln(toString());
+		gui.output(PROMPT_ANSWER);
+		playerAnswer = reader.next();
+		chosenPath = interpretAnswer();
+		return getDaughter(chosenPath);
 	}
 }
 
