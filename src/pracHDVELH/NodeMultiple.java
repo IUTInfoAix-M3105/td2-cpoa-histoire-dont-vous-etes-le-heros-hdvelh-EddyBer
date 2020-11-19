@@ -91,9 +91,9 @@ public class NodeMultiple {
 		if (daughter == null) {
 			return;
 		}
-		int index = 0;
+		int i = 0;
 		while (daughters[i] != null && i < NODE_MAX_ARITY) {
-			index++;
+			i++;
 		}
 		if (i < NODE_MAX_ARITY) {
 			daughters[i] = daughter;
@@ -119,9 +119,15 @@ public class NodeMultiple {
 	 * daughter node.
 	 */
 	public boolean hasDaughters() {
-		if (getDaughters() != null) {
-			return true;
-		} else return false;
+
+		if (daughters == null) {
+			return false;
+		}
+		int i = 0;
+		while (i < daughters.length && daughters[i] != null) {
+			++i;
+		}
+		return i < daughters.length ? true : false;
 	}
 
 	/* Constructors */
